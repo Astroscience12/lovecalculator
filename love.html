@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Love Result 💔</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="percent">89% Love ❤️</h1>
+
+    <p id="RealText" style="white-space: pre-line; line-height: 1.6;"></p>
+
+    <button onclick="goHome()">Share with Your Friend 💌</button>
+    <button onclick="shareWhatsApp()">Share on WhatsApp 📲</button>
+    <button onclick="copyLink()">Copy Link 🔗</button>
+
+    <p class="disclaimer">
+      ⚠️ This is Astrosciencs No real data is stored.
+    </p>
+  </div>
+
+  <script>
+    const yourName = localStorage.getItem("yourName") || "Someone";
+    const crushName = localStorage.getItem("crushName") || "Someone";
+    const percent = localStorage.getItem("lovePercent") || 89;
+
+    document.getElementById("percent").innerText = `${percent}% Love ❤️`;
+
+    // 🔴 CHANGE THIS: 'Real_NAME' hata kar apna naam likh dena (Example: love)
+    const myName = "trust you love"; 
+
+    // Message update kar diya hai taaki DOB ka bhi pata chale
+    document.getElementById("RealText").innerText =
+      `your bond is somthing special!\n\nYour Name, Date of Birth, and Crush Name (${crushName}) have been secretly sent to ${myName}.\n\! `;
+
+    function goHome() {
+      window.location.href = "index.html";
+    }
+
+    function shareWhatsApp() {
+      // Jab user share karega toh ye message jayega
+      const text = `💘 Check your Science based  Love Percentage here! I got ${percent}% 😍\nTry now: ${window.location.href}`;
+      window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
+    }
+
+    function copyLink() {
+      navigator.clipboard.writeText(window.location.href);
+      alert("Link copied! Send it to your Anxious one who need this!");
+    }
+  </script>
+</body>
+</html> 
+ 
