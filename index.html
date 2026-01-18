@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title> Love Calculator 💘</title>
+  <title>Love Calculator 💘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -21,7 +21,7 @@
       placeholder="Your Date of Birth 📅" 
     />
 
-    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+    <hr style="margin: 15px 0; border: 0; border-top: 1px solid #eee;">
 
     <input type="text" id="crushName" placeholder="Crush / Love Name" />
     
@@ -32,6 +32,14 @@
       id="crushDOB" 
       placeholder="Crush Date of Birth 📅" 
     />
+
+    <input type="text" id="describe" placeholder="Describe her in one word? 🌸" />
+
+    <select id="attention">
+      <option value="" disabled selected>Attention: One or Many? 👀</option>
+      <option value="One">One (Loyal)</option>
+      <option value="Many">Many (Attention Seeker)</option>
+    </select>
 
     <button onclick="calculateLove()">Calculate Love %</button>
 
