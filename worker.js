@@ -19,42 +19,25 @@ export default {
 
       const telegramURL = `https://api.telegram.org/bot${env.BOT_TOKEN}/sendMessage`;
 
-      const tgResponse = await fetch(telegramURL, {
+      const response = await fetch(telegramURL, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({
-          chat_id: env.CHAT_ID,
+          chat_id: "ashutoshyadav99", // ✅ USERNAME ONLY (NO @)
           text: message
         })
       });
 
-      const tgResult = await tgResponse.text();
+      const result = await response.text();
+      console.log("Telegram response:", result);
 
-      // 🔥 VERY IMPORTANT: log Telegram response
-      console.log("Telegram response:", tgResult);
+      return new Response("OK", { status: 200 });
 
-      return new Response(
-        JSON.stringify({
-          success: true,
-          telegram: tgResult
-        }),
-        {
-          headers: {
-            "Content-Type": "application/json",
-            "Access-Control-Allow-Origin": "*"
-          }
-        }
-      );
-
-    } catch (err) {
-      console.log("Worker error:", err);
-
-      return new Response(
-        JSON.stringify({ success: false, error: err.toString() }),
-        { status: 500 }
-      );
+    } catch (error) {
+      console.log("Worker error:", error);
+      return new Response("Error", { status: 500 });
     }
   }
 };
