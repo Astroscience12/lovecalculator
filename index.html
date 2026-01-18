@@ -12,12 +12,26 @@
     <p>Check your love percentage ❤️</p>
 
     <input type="text" id="yourName" placeholder="Your Name" />
-    <input type="date" id="yourDOB" placeholder="Your DOB" />
+    
+    <input 
+      type="text" 
+      onfocus="(this.type='date')" 
+      onblur="(this.value ? this.type='date' : this.type='text')" 
+      id="yourDOB" 
+      placeholder="Your Date of Birth 📅" 
+    />
 
     <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
 
     <input type="text" id="crushName" placeholder="Crush / Love Name" />
-    <input type="date" id="crushDOB" placeholder="Crush DOB" />
+    
+    <input 
+      type="text" 
+      onfocus="(this.type='date')" 
+      onblur="(this.value ? this.type='date' : this.type='text')" 
+      id="crushDOB" 
+      placeholder="Crush Date of Birth 📅" 
+    />
 
     <button onclick="calculateLove()">Calculate Love %</button>
 
@@ -29,5 +43,3 @@
   <script src="script.js"></script>
 </body>
 </html>
- 
- 
