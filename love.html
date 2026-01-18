@@ -2,48 +2,56 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Love Result 💔</title>
+  <title>Love Result ❤️</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <div class="container">
-    <h1 id="percent">89% Love ❤️</h1>
+    <h1 id="percent">Loading...</h1>
 
-    <p id="RealText" style="white-space: pre-line; line-height: 1.6;"></p>
+    <p id="tipText" style="font-size: 16px; color: #555; margin: 20px 0; font-style: italic; line-height: 1.5;">
+      Loading tip...
+    </p>
 
-    <button onclick="goHome()">Click to check your love percentage 💌</button>
-    <button onclick="shareWhatsApp()">Share on WhatsApp 📲</button>
-    <button onclick="copyLink()">Copy Link 🔗</button>
-
+    <button onclick="goHome()">Check Another Match 🔄</button>
+    <button onclick="shareWhatsApp()">Share Result on WhatsApp 📲</button>
+    
     <p class="disclaimer">
-      ⚠️ This is Astrosciencs No real data is stored.
+      ⚠️ Fun purpose only.
     </p>
   </div>
 
   <script>
-    const yourName = localStorage.getItem("yourName") || "Someone";
-    const crushName = localStorage.getItem("crushName") || "Someone";
+    // 1. Local Storage se Data lena
     const percent = localStorage.getItem("lovePercent") || 89;
 
+    // Percent show karna
     document.getElementById("percent").innerText = `${percent}% Love ❤️`;
 
-    // CORRECTED LINE - typo tha
-    document.getElementById("RealText").innerText =
-      `Your Name, Date of Birth, and Crush Name (${crushName}) have been secretly sent to ${yourName}.\n\nTry another match!`;
+    // 2. LOVE TIPS LIST (Yahan aap aur tips add kar sakte hain)
+    const tips = [
+      "💡 Tip: Focus on your career for long-term love relations. Success attracts the right people! 💼",
+      "💡 Tip: True love waits. Don't rush into things, let it grow naturally. 🌱",
+      "💡 Tip: Communication is the key. Always be honest with your partner. 🗣️",
+      "💡 Tip: Love is not about possession, it's about appreciation. ✨",
+      "💡 Tip: Before finding the right person, be the right person. ❤️"
+    ];
 
+    // 3. Random Tip Select karna
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+
+    // 4. Tip ko screen par dikhana
+    document.getElementById("tipText").innerText = randomTip;
+
+    // Functions
     function goHome() {
       window.location.href = "index.html";
     }
 
     function shareWhatsApp() {
-      const text = `💘 Check your Science based Love Percentage here! I got ${percent}% 😍\nTry now: ${window.location.href}`;
+      const text = `I got ${percent}% Love Score! ❤️ Check yours here:\n${window.location.href}`;
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
-    }
-
-    function copyLink() {
-      navigator.clipboard.writeText(window.location.href);
-      alert("Link copied! Send it to your Anxious one who need this!");
     }
   </script>
 </body>
