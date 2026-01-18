@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -29,17 +28,16 @@
 
     document.getElementById("percent").innerText = `${percent}% Love ❤️`;
 
-  
-    document.getElementById("ReaCrushinnerText =
-      `your bgetElementById("RealText")\nYour Name, Date of Birth, and CruNameame (patrushName}) have been secretly sent to ${myName}.\n\! `;
+    // CORRECTED LINE - typo tha
+    document.getElementById("RealText").innerText =
+      `Your Name, Date of Birth, and Crush Name (${crushName}) have been secretly sent to ${yourName}.\n\nTry another match!`;
 
     function goHome() {
       window.location.href = "index.html";
     }
 
     function shareWhatsApp() {
-      // Jab user share karega toh ye message jayega
-      const text = `💘 Check your Science based  Love Percentage here! I got ${percent}% 😍\nTry now: ${window.location.href}`;
+      const text = `💘 Check your Science based Love Percentage here! I got ${percent}% 😍\nTry now: ${window.location.href}`;
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
     }
 
@@ -49,5 +47,4 @@
     }
   </script>
 </body>
-</html> 
- 
+</html>
