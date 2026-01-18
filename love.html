@@ -10,38 +10,57 @@
   <div class="container">
     <h1 id="percent">Loading...</h1>
 
-    <p id="tipText" style="font-size: 16px; color: #555; margin: 20px 0; font-style: italic; line-height: 1.5;">
-      Loading tip...
+    <p id="tipText" style="font-size: 15px; color: #333; margin: 20px 0; font-weight: 500; line-height: 1.6; background: #fff0f5; padding: 15px; border-radius: 8px; border-left: 5px solid #ff4e8c;">
+      Loading truth...
     </p>
 
     <button onclick="goHome()">Check Another Match 🔄</button>
     <button onclick="shareWhatsApp()">Share Result on WhatsApp 📲</button>
     
     <p class="disclaimer">
-      ⚠️ Fun purpose only.
+      ⚠️ Reality Check provided by Paradox Rules.
     </p>
   </div>
 
   <script>
     // 1. Local Storage se Data lena
-    const percent = localStorage.getItem("lovePercent") || 89;
+    let storedPercent = parseInt(localStorage.getItem("lovePercent")) || 50;
+    const yourName = localStorage.getItem("yourName") || "";
 
-    // Percent show karna
-    document.getElementById("percent").innerText = `${percent}% Love ❤️`;
+    // 2. 👑 SPECIAL LOGIC FOR ASHUTOSH 👑
+    let finalPercent;
 
-    // 2. LOVE TIPS LIST (Yahan aap aur tips add kar sakte hain)
+    // Agar naam me "ashutosh" kahin bhi aata hai
+    if (yourName.toLowerCase().includes("ashutosh")) {
+       finalPercent = 100; // Ashutosh ke liye hamesha 100%
+    } else {
+       // Baaki sabke liye: Agar 75 se upar hai toh 75 kar do
+       if (storedPercent > 75) {
+         finalPercent = 75;
+       } else {
+         finalPercent = storedPercent;
+       }
+    }
+
+    // 3. Result Show karna
+    document.getElementById("percent").innerText = `${finalPercent}% Love ❤️`;
+
+    // 4. 🔥 PARADOX RULES (UNCENSORED TIPS) 🔥
     const tips = [
-      "💡 Tip: Focus on your career for long-term love relations. Success attracts the right people! 💼",
-      "💡 Tip: True love waits. Don't rush into things, let it grow naturally. 🌱",
-      "💡 Tip: Communication is the key. Always be honest with your partner. 🗣️",
-      "💡 Tip: Love is not about possession, it's about appreciation. ✨",
-      "💡 Tip: Before finding the right person, be the right person. ❤️"
+      "🔥 Rule #1: Jo zyada chipakta hai, wahi sabse pehle chutiya banta hai. (Sach: Attention pyaar nahi, imbalance hota hai)",
+      "🔥 Rule #2: Self-respect ke bina love sirf bhikh hai. (Sach: Jo adjust hi adjust karta hai, uski value zero ho jaati hai)",
+      "🔥 Rule #3: Mixed signals = NO. (Sach: Confusion romantic nahi hoti. Agar interest hota, clarity hoti)",
+      "🔥 Rule #4: Nice banna aur fake sweet banna alag cheez hai. (Sach: Over-nice banna attraction ka qatl hai)",
+      "🔥 Rule #5: Ignore karna acting nahi, by-product hona chahiye. (Sach: Jo apni life me busy hai wahi naturally rare lagta hai)",
+      "🔥 Rule #6: Pyaar ko goal mat bana, warna khud goal-post ban jaoge. (Sach: Neediness gender nahi dekhti, bas kaat ke chali jaati hai)",
+      "🔥 Rule #7: Crush ko pedestal pe rakhna band karo. (Sach: Jo upar chadhata hai, wahi neeche girta hai)",
+      "🔥 Rule #8: Tu adhoora hai ye jhooth hai. (Sach: Healthy relationship wahi banata hai jo akela bhi theek hai)",
+      "🔥 Rule #9: Texting pe emotional attachment banana bewakoofi hai. (Sach: Real bonding real life me hoti hai, phone me nahi)",
+      "🔥 Rule #10: Jo khud ko choose karta hai, wahi dusron ka option nahi banta. (Sach: Self-love selfish nahi, survival hai)"
     ];
 
-    // 3. Random Tip Select karna
+    // 5. Random Tip Select karna
     const randomTip = tips[Math.floor(Math.random() * tips.length)];
-
-    // 4. Tip ko screen par dikhana
     document.getElementById("tipText").innerText = randomTip;
 
     // Functions
@@ -50,7 +69,7 @@
     }
 
     function shareWhatsApp() {
-      const text = `I got ${percent}% Love Score! ❤️ Check yours here:\n${window.location.href}`;
+      const text = `I got ${finalPercent}% Love Score! ❤️ Check yours here:\n${window.location.href}`;
       window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank");
     }
   </script>
