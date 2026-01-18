@@ -2,44 +2,29 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title> Love Calculator 💘</title>
+  <title>Love Calculator 💘</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="container">
-    <h1>💘 Love Calculator</h1>
-    <p>Check your love percentage ❤️</p>
 
-    <input type="text" id="yourName" placeholder="Your Name" />
-    
-    <input 
-      type="text" 
-      onfocus="(this.type='date')" 
-      onblur="(this.value ? this.type='date' : this.type='text')" 
-      id="yourDOB" 
-      placeholder="Your Date of Birth 📅" 
-    />
+<div class="container">
+  <h1>💘 Love Calculator</h1>
+  <p>Check your love percentage ❤️</p>
 
-    <hr style="margin: 20px 0; border: 0; border-top: 1px solid #eee;">
+  <input type="text" id="yourName" placeholder="Your Name" />
+  <input type="date" id="yourDOB" />
 
-    <input type="text" id="crushName" placeholder="Crush / Love Name" />
-    
-    <input 
-      type="text" 
-      onfocus="(this.type='date')" 
-      onblur="(this.value ? this.type='date' : this.type='text')" 
-      id="crushDOB" 
-      placeholder="Crush Date of Birth 📅" 
-    />
+  <hr>
 
-    <button onclick="calculateLove()">Calculate Love %</button>
+  <input type="text" id="crushName" placeholder="Crush / Love Name" />
+  <input type="date" id="crushDOB" />
 
-    <p class="disclaimer">
-      No real data is stored.
-    </p>
-  </div>
+  <button onclick="calculateLove()">Calculate Love %</button>
 
-  <script src="script.js"></script>
+  <p class="disclaimer">No real data is stored.</p>
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
